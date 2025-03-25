@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Set Docker image name, tag, and container name
-IMAGE_NAME="sukanth0021/pro"
+IMAGE_NAME="sukanth0021/final_project"
 TAG="latest"
 CONTAINER_NAME="devopss"
 
