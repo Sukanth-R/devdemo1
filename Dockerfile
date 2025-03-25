@@ -1,10 +1,20 @@
-# Base image
+# Use official Nginx base image
 FROM nginx:latest
 
-# Copy the HTML file to NGINX default location
-COPY index.html /usr/share/nginx/html/index.html
+# Set working directory
+WORKDIR /usr/share/nginx/html
+
+# Remove default Nginx HTML files
+RUN rm -rf ./*
+
+# Copy all project files (including HTML, CSS, JS, images, and Bootstrap)
+COPY . /usr/share/nginx/html
+
+# Set correct file permissions
+RUN chmod -R 755 /usr/share/nginx/html
 
 # Expose port 80
 EXPOSE 80
-# Start NGINX
+
+# Start Nginx server
 CMD ["nginx", "-g", "daemon off;"]
