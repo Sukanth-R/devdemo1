@@ -1,0 +1,995 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Sukanth - Portfolio</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
+        <link rel="stylesheet" href="css/bootstrap.min.css"/>
+        <script src="js/bootstrap.bundle.min.js"></script>
+        <style>
+            :root {
+                --primary-color: #ff5e5e;
+                --secondary-color: #4a4a4a;
+                --light-color: #f8f9fa;
+                --dark-color: #343a40;
+                --text-color: #555;
+                --card-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+                --transition: all 0.3s ease;
+            }
+            
+            body {
+                font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+                color: var(--text-color);
+                background-color: #ffffff;
+                line-height: 1.6;
+                overflow-x: hidden;
+            }
+            
+            /* Navigation */
+            .navbar {
+                background-color: rgba(255, 255, 255, 0.95);
+                width: 100%;
+                height: 90px;
+                margin-top: 0;
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                padding: 0 5%;
+                position: fixed;
+                top: 0;
+                z-index: 1000;
+                box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
+                transition: var(--transition);
+            }
+            
+            .navbar.scrolled {
+                height: 70px;
+                box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+            }
+            
+            .navbar img {
+                height: 80px;
+                width: auto;
+                transition: var(--transition);
+            }
+            
+            .navbar.scrolled img {
+                height: 60px;
+            }
+            
+            .navbar ul {
+                list-style-type: none;
+                margin: 0;
+                padding: 0;
+                display: flex;
+                align-items: center;
+            }
+            
+            .navbar ul li {
+                margin-left: 20px;
+            }
+            
+            .navbar ul li a {
+                text-decoration: none;
+                color: var(--dark-color);
+                font-weight: 600;
+                font-size: 18px;
+                display: block;
+                position: relative;
+                padding: 5px 0;
+                transition: var(--transition);
+            }
+            
+            .navbar ul li a:after {
+                content: '';
+                position: absolute;
+                bottom: 0;
+                left: 0;
+                width: 0;
+                height: 2px;
+                background-color: var(--primary-color);
+                transition: var(--transition);
+            }
+            
+            .navbar ul li a:hover {
+                color: var(--primary-color);
+            }
+            
+            .navbar ul li a:hover:after {
+                width: 100%;
+            }
+            
+            /* Hero Section */
+            #c1 {
+                padding-top: 120px;
+                padding-bottom: 80px;
+                background: linear-gradient(135deg, #f5f7fa 0%, #ffffff 100%);
+            }
+            
+            .hero-card {
+                background-color: rgba(255, 255, 255, 0.9);
+                border-radius: 20px;
+                padding: 40px;
+                box-shadow: var(--card-shadow);
+                transition: var(--transition);
+                height: auto;
+                border: none;
+            }
+            
+            .hero-card:hover {
+                transform: translateY(-5px);
+                box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
+            }
+            
+            .hero-title {
+                font-size: 4.5rem;
+                font-weight: 700;
+                color: var(--dark-color);
+                line-height: 1.2;
+                margin-bottom: 20px;
+            }
+            
+            .hero-title small {
+                color: var(--primary-color);
+                font-size: 4.5rem;
+                font-weight: 700;
+            }
+            
+            .hero-subtitle {
+                font-size: 2rem;
+                color: var(--secondary-color);
+                margin-bottom: 25px;
+            }
+            
+            .hero-text {
+                font-size: 1.2rem;
+                color: var(--text-color);
+                margin-bottom: 30px;
+            }
+            
+            .hero-image {
+                border-radius: 20px;
+                transition: var(--transition);
+                max-width: 100%;
+                height: auto;
+            }
+            
+            
+            /* About Section */
+            #c2 {
+                padding: 100px 0;
+                background-color: #ffffff;
+            }
+            
+            .about-title {
+                font-size: 3.5rem;
+                font-weight: 700;
+                color: var(--dark-color);
+                margin-bottom: 40px;
+                position: relative;
+            }
+            
+            .about-title:after {
+                content: '';
+                position: absolute;
+                bottom: -10px;
+                left: 0;
+                width: 80px;
+                height: 4px;
+                background-color: var(--primary-color);
+                border-radius: 2px;
+            }
+            
+            .about-text {
+                font-size: 1.2rem;
+                line-height: 1.8;
+                color: var(--text-color);
+            }
+            
+            .about-text small {
+                color: var(--primary-color);
+                font-weight: 600;
+            }
+            
+            .profile-image {
+                border-radius: 20px;
+                box-shadow: var(--card-shadow);
+                max-width: 100%;
+                height: auto;
+                transition: var(--transition);
+            }
+            
+            .profile-image:hover {
+                transform: scale(1.03);
+            }
+            
+            /* Skills Section */
+            #c3 {
+                padding: 100px 0;
+                background: linear-gradient(135deg, #f5f7fa 0%, #ffffff 100%);
+            }
+            
+            .section-title {
+                font-size: 3.5rem;
+                font-weight: 700;
+                color: var(--dark-color);
+                margin-bottom: 60px;
+                text-align: center;
+                position: relative;
+            }
+            
+            .section-title:after {
+                content: '';
+                position: absolute;
+                bottom: -15px;
+                left: 50%;
+                transform: translateX(-50%);
+                width: 80px;
+                height: 4px;
+                background-color: var(--primary-color);
+                border-radius: 2px;
+            }
+            
+            .skills-container {
+                padding: 0 5%;
+            }
+            
+            .skill-card {
+                background-color: #ffffff;
+                border-radius: 15px;
+                padding: 30px;
+                margin-bottom: 30px;
+                box-shadow: var(--card-shadow);
+                transition: var(--transition);
+                border: none;
+                text-align: center;
+                height: 100%;
+            }
+            
+            .skill-card:hover {
+                transform: translateY(-10px);
+                box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
+            }
+            
+            .skill-icon {
+                font-size: 3.5rem;
+                color: var(--primary-color);
+                margin-bottom: 20px;
+            }
+            
+            .skill-name {
+                font-size: 1.5rem;
+                font-weight: 600;
+                color: var(--dark-color);
+                margin-bottom: 15px;
+            }
+            
+            .skill-bar {
+                background-color: #e9ecef;
+                border-radius: 10px;
+                height: 10px;
+                margin-top: 20px;
+                overflow: hidden;
+            }
+            
+            .skill-level {
+                height: 100%;
+                background: linear-gradient(90deg, var(--primary-color), #ff8a8a);
+                border-radius: 10px;
+                width: 0;
+                transition: width 1.5s ease;
+            }
+            
+            .skill-card:hover .skill-level {
+                width: 90%;
+            }
+            
+            .skill-card:nth-child(2):hover .skill-level {
+                width: 80%;
+            }
+            
+            .skill-card:nth-child(3):hover .skill-level {
+                width: 75%;
+            }
+            
+            .skill-card:nth-child(4):hover .skill-level {
+                width: 85%;
+            }
+            
+            .skill-card:nth-child(5):hover .skill-level {
+                width: 70%;
+            }
+            
+            .skill-card:nth-child(6):hover .skill-level {
+                width: 80%;
+            }
+            
+            .skill-card:nth-child(7):hover .skill-level {
+                width: 90%;
+            }
+            
+            .skill-card:nth-child(8):hover .skill-level {
+                width: 85%;
+            }
+            
+            .skill-card:nth-child(9):hover .skill-level {
+                width: 95%;
+            }
+            
+            .category-title {
+                font-size: 2rem;
+                font-weight: 600;
+                color: var(--primary-color);
+                margin: 40px 0 30px;
+                text-align: center;
+            }
+            
+            /* Projects Section */
+            #c4 {
+                padding: 100px 0;
+                background-color: #ffffff;
+            }
+            
+            .project-card {
+                background-color: #ffffff;
+                border-radius: 15px;
+                padding: 30px;
+                margin-bottom: 30px;
+                box-shadow: var(--card-shadow);
+                transition: var(--transition);
+                border: none;
+                text-align: center;
+                height: 100%;
+            }
+            
+            .project-card:hover {
+                transform: translateY(-10px) scale(1.02);
+                box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
+            }
+            
+            .project-title {
+                font-size: 1.5rem;
+                font-weight: 600;
+                color: var(--primary-color);
+                margin-bottom: 15px;
+            }
+            
+            .project-type, .project-location {
+                font-size: 1rem;
+                color: var(--text-color);
+                margin-bottom: 10px;
+            }
+            
+            .gitlink {
+                display: inline-block;
+                padding: 10px 25px;
+                background-color: var(--primary-color);
+                color: white;
+                border-radius: 30px;
+                text-decoration: none;
+                font-weight: 600;
+                margin-top: 20px;
+                transition: var(--transition);
+                border: 2px solid var(--primary-color);
+            }
+            
+            .gitlink:hover {
+                background-color: transparent;
+                color: var(--primary-color);
+                transform: translateY(-3px);
+            }
+            
+            /* Resume Section */
+            #c5 {
+                padding: 100px 0;
+                background: linear-gradient(135deg, #f5f7fa 0%, #ffffff 100%);
+            }
+            
+            .resume-title {
+                font-size: 3.5rem;
+                font-weight: 700;
+                color: var(--dark-color);
+                margin-bottom: 60px;
+                position: relative;
+            }
+            
+            .resume-title:after {
+                content: '';
+                position: absolute;
+                bottom: -15px;
+                left: 0;
+                width: 80px;
+                height: 4px;
+                background-color: var(--primary-color);
+                border-radius: 2px;
+            }
+            
+            .resume-image {
+                border-radius: 20px;
+                max-width: 100%;
+                height: auto;
+                transition: var(--transition);
+            }
+            
+           
+            
+            .resume-button {
+                display: inline-block;
+                padding: 15px 40px;
+                background-color: var(--primary-color);
+                color: white;
+                border-radius: 30px;
+                text-decoration: none;
+                font-weight: 600;
+                font-size: 1.2rem;
+                margin: 20px 15px;
+                transition: var(--transition);
+                border: 2px solid var(--primary-color);
+                box-shadow: 0 5px 15px rgba(255, 94, 94, 0.3);
+            }
+            
+            .resume-button:hover {
+                background-color: transparent;
+                color: var(--primary-color);
+                transform: translateY(-5px);
+                box-shadow: 0 8px 25px rgba(255, 94, 94, 0.4);
+            }
+            
+            /* Contact Section */
+            #c6 {
+                padding: 100px 0;
+                background-color: #ffffff;
+            }
+            
+            .contact-title {
+                font-size: 3.5rem;
+                font-weight: 700;
+                color: var(--dark-color);
+                margin-bottom: 60px;
+                position: relative;
+            }
+            
+            .contact-title:after {
+                content: '';
+                position: absolute;
+                bottom: -15px;
+                left: 0;
+                width: 80px;
+                height: 4px;
+                background-color: var(--primary-color);
+                border-radius: 2px;
+            }
+            
+            .contact-gif {
+                border-radius: 20px;
+                max-width: 100%;
+                height: auto;
+            }
+            
+            .contact-icon {
+                font-size: 2.5rem;
+                color: var(--primary-color);
+                margin-right: 20px;
+            }
+            
+            .contact-info {
+                font-size: 1.5rem;
+                color: var(--text-color);
+                margin-bottom: 30px;
+                display: flex;
+                align-items: center;
+            }
+            
+            .contact-info a {
+                color: var(--text-color);
+                text-decoration: none;
+                transition: var(--transition);
+            }
+            
+            .contact-info a:hover {
+                color: var(--primary-color);
+            }
+            
+            /* Footer */
+            footer {
+                background-color: rgb(255, 255, 255);
+                padding: 40px 0;
+                color: white;
+            }
+            
+            .footer-logo {
+                height:150px;
+                width:200;
+    
+            }
+            
+            .social-icons {
+                display: flex;
+                justify-content: flex-end;
+                align-items: center;
+            }
+            
+            .social-icon {
+                color: rgb(0, 0, 0);
+                font-size: 2rem;
+                margin-left: 25px;
+                transition: var(--transition);
+            }
+            
+            .social-icon:hover {
+                color: var(--primary-color);
+                transform: translateY(-5px);
+            }
+            
+            .social-icon img {
+                height: 40px;
+                width: auto;
+                transition: var(--transition);
+            }
+            
+            .social-icon img:hover {
+                transform: scale(1.1);
+                opacity: 0.8;
+            }
+            
+            /* Responsive Styles */
+            @media (max-width: 1199.98px) {
+                .hero-title, .hero-title small {
+                    font-size: 3.8rem;
+                }
+                
+                .hero-subtitle {
+                    font-size: 1.8rem;
+                }
+            }
+            
+            @media (max-width: 991.98px) {
+                .navbar {
+                    padding: 0 3%;
+                }
+                
+                .hero-title, .hero-title small {
+                    font-size: 3.2rem;
+                }
+                
+                .hero-subtitle {
+                    font-size: 1.6rem;
+                }
+                
+                .hero-text, .about-text {
+                    font-size: 1.1rem;
+                }
+                
+                .section-title, .resume-title, .contact-title {
+                    font-size: 3rem;
+                }
+            }
+            
+            @media (max-width: 767.98px) {
+                .navbar {
+                    height: 80px;
+                    padding: 0 20px;
+                }
+                
+                .navbar img {
+                    height: 60px;
+                }
+                
+                .navbar ul li a {
+                    font-size: 16px;
+                }
+                
+                #c1 {
+                    padding-top: 100px;
+                }
+                
+                .hero-title, .hero-title small {
+                    font-size: 2.8rem;
+                }
+                
+                .hero-subtitle {
+                    font-size: 1.4rem;
+                }
+                
+                .hero-card {
+                    padding: 30px;
+                }
+                
+                .section-title, .resume-title, .contact-title {
+                    font-size: 2.5rem;
+                }
+                
+                .skill-name, .project-title {
+                    font-size: 1.3rem;
+                }
+                
+                .contact-info {
+                    font-size: 1.2rem;
+                }
+                
+                .resume-button {
+                    padding: 12px 30px;
+                    font-size: 1rem;
+                }
+            }
+            
+            @media (max-width: 575.98px) {
+                .navbar {
+                    height: 70px;
+                }
+                
+                .navbar img {
+                    height: 50px;
+                }
+                
+                .navbar ul li {
+                    margin-left: 10px;
+                }
+                
+                .navbar ul li a {
+                    font-size: 14px;
+                }
+                
+                .hero-title, .hero-title small {
+                    font-size: 2.2rem;
+                }
+                
+                .hero-subtitle {
+                    font-size: 1.2rem;
+                }
+                
+                .hero-text, .about-text {
+                    font-size: 1rem;
+                }
+                
+                .section-title, .resume-title, .contact-title {
+                    font-size: 2rem;
+                }
+                
+                .skill-card, .project-card {
+                    padding: 20px;
+                }
+                
+                .skill-icon {
+                    font-size: 2.5rem;
+                }
+                
+                .skill-name, .project-title {
+                    font-size: 1.2rem;
+                }
+                
+                .contact-info {
+                    font-size: 1rem;
+                }
+                
+                .footer-logo {
+                    height: 60px;
+                }
+                
+                .social-icon {
+                    font-size: 1.5rem;
+                    margin-left: 15px;
+                }
+            }
+            
+            @media (max-width: 400px) {
+                .hero-title, .hero-title small {
+                    font-size: 1.8rem;
+                }
+                
+                .navbar ul li {
+                    margin-left: 8px;
+                }
+                
+                .navbar ul li a {
+                    font-size: 12px;
+                }
+            }
+        </style>
+    </head>
+    <body>
+        <!-- Navigation -->
+        <nav class="navbar" id="navbar">
+            <img src="images/i2.png" alt="Logo"/>
+            <ul class="menu">
+                <li><a href="#c1">Home</a></li>
+                <li><a href="#c2">About</a></li>
+                <li><a href="#c3">Skills</a></li>
+                <li><a href="#c4">Projects</a></li>
+                <li><a href="#c5">Resume</a></li>
+                <li><a href="#c6">Contact</a></li>
+            </ul>
+        </nav>
+
+        <!-- Hero Section -->
+        <section id="c1">
+            <div class="container">
+                <div class="row align-items-center">
+                    <div class="col-lg-7 col-md-12 mb-5 mb-lg-0">
+                        <div class="card hero-card">
+                            <h1 class="hero-title">Hi, I am <small>Sukanth</small></h1>
+                            <h4 class="hero-subtitle">Full Stack Developer</h4>
+                            <h4 class="hero-subtitle">Career Objective</h4>
+                            <p class="hero-text">
+                                To become successful full stack developer 
+                                in a reputated company and 
+                                improve my skills and 
+                                to lead a team as a team leader
+                            </p>
+                        </div>
+                    </div>
+                    <div class="col-lg-5 col-md-12 text-center">
+                        <img src="images/i5.avif" class="hero-image img-fluid" alt="Profile Illustration"/>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- About Section -->
+        <section id="c2">
+            <div class="container">
+                <h1 class="about-title">About Me</h1>
+                <div class="row align-items-center">
+                    <div class="col-lg-4 col-md-12 mb-5 mb-lg-0 text-center">
+                        <img src="images/i1.png" class="profile-image img-fluid" alt="Profile Picture"/>
+                    </div>
+                    <div class="col-lg-8 col-md-12">
+                        <p class="about-text">
+                            I'm <small>Sukanth</small> and I from <small>Salem</small>. I'm currently pursuing my <small>BTECH Information Technology</small> degree at <small>Kongu Engineering College</small> at Perundurai. I completed my schooling in <small>Mahendra Matric Higher Secondary School</small> at kallipatti with a percentage of <small>93.67% in 12th</small> and <small>99.7% in 10th</small>. My area of interest is <small>App development</small> and my area of specialization in <small>Full stack development</small>. My short term goal is to be <small>developer in a reputated company</small> and my long term is to become a <small>successful developer and noticed by everyone</small>.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Skills Section -->
+        <section id="c3">
+            <div class="container">
+                <h1 class="section-title">Skills</h1>
+                
+                <h3 class="category-title">Technical Skills</h3>
+                <div class="row">
+                    <div class="col-lg-4 col-md-6 mb-4">
+                        <div class="skill-card">
+                            <div class="skill-icon"><i class="fas fa-globe"></i></div>
+                            <div class="skill-name">Full Stack Web Development</div>
+                            <div class="skill-bar">
+                                <div class="skill-level"></div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="col-lg-4 col-md-6 mb-4">
+                        <div class="skill-card">
+                            <div class="skill-icon"><i class="fab fa-java"></i></div>
+                            <div class="skill-name">Java</div>
+                            <div class="skill-bar">
+                                <div class="skill-level"></div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="col-lg-4 col-md-6 mb-4">
+                        <div class="skill-card">
+                            <div class="skill-icon"><i class="fas fa-code"></i></div>
+                            <div class="skill-name">C++</div>
+                            <div class="skill-bar">
+                                <div class="skill-level"></div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="col-lg-4 col-md-6 mb-4">
+                        <div class="skill-card">
+                            <div class="skill-icon"><i class="fab fa-html5"></i></div>
+                            <div class="skill-name">HTML, CSS, JavaScript</div>
+                            <div class="skill-bar">
+                                <div class="skill-level"></div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="col-lg-4 col-md-6 mb-4">
+                        <div class="skill-card">
+                            <div class="skill-icon"><i class="fab fa-python"></i></div>
+                            <div class="skill-name">Python</div>
+                            <div class="skill-bar">
+                                <div class="skill-level"></div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="col-lg-4 col-md-6 mb-4">
+                        <div class="skill-card">
+                            <div class="skill-icon"><i class="fab fa-node-js"></i></div>
+                            <div class="skill-name">Node.js, MongoDB</div>
+                            <div class="skill-bar">
+                                <div class="skill-level"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <h3 class="category-title">Non-Technical Skills</h3>
+                <div class="row">
+                    <div class="col-lg-4 col-md-6 mb-4">
+                        <div class="skill-card">
+                            <div class="skill-icon"><i class="fas fa-brain"></i></div>
+                            <div class="skill-name">Logical Thinking</div>
+                            <div class="skill-bar">
+                                <div class="skill-level"></div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="col-lg-4 col-md-6 mb-4">
+                        <div class="skill-card">
+                            <div class="skill-icon"><i class="fas fa-users"></i></div>
+                            <div class="skill-name">Leadership Quality</div>
+                            <div class="skill-bar">
+                                <div class="skill-level"></div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="col-lg-4 col-md-6 mb-4">
+                        <div class="skill-card">
+                            <div class="skill-icon"><i class="fas fa-bolt"></i></div>
+                            <div class="skill-name">Quick Learner</div>
+                            <div class="skill-bar">
+                                <div class="skill-level"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Projects Section -->
+        <section id="c4">
+            <div class="container">
+                <h1 class="section-title">Projects</h1>
+                <div class="row">
+                    <div class="col-lg-4 col-md-6 mb-4">
+                        <div class="project-card">
+                            <h5 class="project-title">Smart Cycle Rental System</h5>
+                            <p class="project-type">Web Application</p>
+                            <p class="project-location">Outside College</p>
+                            <a href="https://github.com/Sukanth-R/rentalcycles.git" class="gitlink">View on GitHub</a>
+                        </div>
+                    </div>
+                    
+                    <div class="col-lg-4 col-md-6 mb-4">
+                        <div class="project-card">
+                            <h5 class="project-title">Bus Tracking System</h5>
+                            <p class="project-type">Web Application</p>
+                            <p class="project-location">Inside College</p>
+                            <a href="https://github.com/Sukanth-R/bustracker.git" class="gitlink">View on GitHub</a>
+                        </div>
+                    </div>
+                    
+                    <div class="col-lg-4 col-md-6 mb-4">
+                        <div class="project-card">
+                            <h5 class="project-title">Age Calculator</h5>
+                            <p class="project-type">Mobile Application</p>
+                            <p class="project-location">Inside College</p>
+                            <a href="https://github.com/Sukanth-R/age-calculator.git" class="gitlink">View on GitHub</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Resume Section -->
+        <section id="c5">
+            <div class="container">
+                <h1 class="resume-title">Resume</h1>
+                <div class="row align-items-center">
+                    <div class="col-lg-8 col-md-12 mb-5 mb-lg-0 text-center">
+                        <a href="resume.pdf" target="_blank" class="resume-button">View Resume</a>
+                        <a href="resume.pdf" download="sukanth-resume.pdf" class="resume-button">Download Resume</a>
+                    </div>
+                    <div class="col-lg-4 col-md-12 text-center">
+                        <img src="images/i7.avif" class="resume-image img-fluid" alt="Resume Illustration"/>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="c6">
+            <div class="container">
+                <h1 class="contact-title">Contact</h1>
+                <div class="row align-items-center">
+                    <div class="col-lg-5 col-md-12 mb-5 mb-lg-0 text-center">
+                        <img src="images/i8.gif" class="contact-gif img-fluid" alt="Contact GIF"/>
+                    </div>
+                    <div class="col-lg-7 col-md-12">
+                        <div class="contact-info">
+                            <i class="fas fa-phone-alt contact-icon"></i>
+                            <span>+91 9987654321</span>
+                        </div>
+                        <div class="contact-info">
+                            <i class="fas fa-envelope contact-icon"></i>
+                            <a href="mailto:sukanth0021@gmail.com">sukanth0041@gmail.com</a>
+                        </div>
+                        <div class="contact-info">
+                            <i class="fas fa-map-marker-alt contact-icon"></i>
+                            <span>Salem, Tamil Nadu, India</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer>
+            <div class="container">
+                <div class="row align-items-center">
+                    <div class="col-lg-6 col-md-12 mb-4 mb-lg-0">
+                        <img src="images/i13.jpg" class="footer-logo" alt="Footer Logo"/>
+                    </div>
+                    <div class="col-lg-6 col-md-12">
+                        <div class="social-icons">
+                            <a href="https://www.linkedin.com/in/sukanth-r-24638a259" class="social-icon" target="_blank">
+                                <i class="fab fa-linkedin-in"></i>
+                            </a>
+                            <a href="https://github.com/Sukanth-R/" class="social-icon" target="_blank">
+                                <i class="fab fa-github"></i>
+                            </a>
+                
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </footer>
+
+        <script>
+            // Navbar scroll effect
+            window.addEventListener('scroll', function() {
+                const navbar = document.getElementById('navbar');
+                if (window.scrollY > 50) {
+                    navbar.classList.add('scrolled');
+                } else {
+                    navbar.classList.remove('scrolled');
+                }
+            });
+            
+            // Animate skill bars on scroll
+            window.addEventListener('scroll', function() {
+                const skillLevels = document.querySelectorAll('.skill-level');
+                const skillsSection = document.getElementById('c3');
+                const sectionPosition = skillsSection.getBoundingClientRect().top;
+                const screenPosition = window.innerHeight / 1.3;
+                
+                if (sectionPosition < screenPosition) {
+                    skillLevels[0].style.width = '90%';
+                    skillLevels[1].style.width = '80%';
+                    skillLevels[2].style.width = '75%';
+                    skillLevels[3].style.width = '85%';
+                    skillLevels[4].style.width = '70%';
+                    skillLevels[5].style.width = '80%';
+                    skillLevels[6].style.width = '90%';
+                    skillLevels[7].style.width = '85%';
+                    skillLevels[8].style.width = '95%';
+                }
+            });
+            
+            // Smooth scrolling for navigation links
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    
+                    const targetId = this.getAttribute('href');
+                    const targetElement = document.querySelector(targetId);
+                    
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                });
+            });
+        </script>
+    </body>
+</html>
