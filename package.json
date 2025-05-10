@@ -1,0 +1,16 @@
+{
+  "name": "html-site",
+  "version": "1.0.0",
+  "description": "Simple static HTML site deployment",
+  "homepage": "https://your-username.github.io/devdemo1.git",
+  "scripts": {
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build"
+  },
+  "devDependencies": {
+    "gh-pages": "^6.3.0"
+  },
+  "dependencies": {
+    "html-site": "file:"
+  }
+}
